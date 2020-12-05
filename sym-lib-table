@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name vfc_power_supply-rescue)(type Legacy)(uri ${KIPRJMOD}/vfc_power_supply-rescue.lib)(options "")(descr ""))
+)
