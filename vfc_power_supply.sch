@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 3
+Sheet 1 4
 Title ""
 Date "15 nov 2012"
 Rev ""
@@ -13,8 +13,6 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text Notes 650  7600 0    50   ~ 0
-ID_SD and ID_SC PINS:\nThese pins are reserved for HAT ID EEPROM.\n\nAt boot time this I2C interface will be\ninterrogated to look for an EEPROM\nthat identifes the attached board and\nallows automagic setup of the GPIOs\n(and optionally, Linux drivers).\n\nDO NOT USE these pins for anything other\nthan attaching an I2C ID EEPROM. Leave\nunconnected if ID EEPROM not required.
 $Comp
 L vfc_power_supply-rescue:Mounting_Hole-Mechanical MK1
 U 1 1 5834FB2E
@@ -72,10 +70,10 @@ F4 "+5V" O R 6750 1450 50
 F5 "+21V" O R 6750 1250 50 
 $EndSheet
 $Comp
-L power:+5V #PWR0101
+L power:+5V #PWR05
 U 1 1 5FD3F9A6
 P 3800 1350
-F 0 "#PWR0101" H 3800 1200 50  0001 C CNN
+F 0 "#PWR05" H 3800 1200 50  0001 C CNN
 F 1 "+5V" H 3800 1490 50  0000 C CNN
 F 2 "" H 3800 1350 50  0000 C CNN
 F 3 "" H 3800 1350 50  0000 C CNN
@@ -90,10 +88,10 @@ Wire Wire Line
 	3800 1600 3600 1600
 Connection ~ 3800 1500
 $Comp
-L power:GND #PWR0102
+L power:GND #PWR07
 U 1 1 5FD3F9B0
 P 3700 3550
-F 0 "#PWR0102" H 3700 3300 50  0001 C CNN
+F 0 "#PWR07" H 3700 3300 50  0001 C CNN
 F 1 "GND" H 3700 3400 50  0000 C CNN
 F 2 "" H 3700 3550 50  0000 C CNN
 F 3 "" H 3700 3550 50  0000 C CNN
@@ -114,10 +112,10 @@ Wire Wire Line
 	3700 2100 3600 2100
 Connection ~ 3700 2400
 $Comp
-L power:GND #PWR0103
+L power:GND #PWR06
 U 1 1 5FD3F9BE
 P 3000 3550
-F 0 "#PWR0103" H 3000 3300 50  0001 C CNN
+F 0 "#PWR06" H 3000 3300 50  0001 C CNN
 F 1 "GND" H 3000 3400 50  0000 C CNN
 F 2 "" H 3000 3550 50  0000 C CNN
 F 3 "" H 3000 3550 50  0000 C CNN
@@ -131,18 +129,15 @@ Wire Wire Line
 Wire Wire Line
 	3000 2700 3100 2700
 Connection ~ 3000 3400
-Connection ~ 2900 1500
-Wire Wire Line
-	2900 2300 3100 2300
 Wire Wire Line
 	2900 1500 3100 1500
 Wire Wire Line
 	2900 1350 2900 1500
 $Comp
-L power:+3.3V #PWR0104
+L power:+3.3V #PWR04
 U 1 1 5FD3F9CC
 P 2900 1350
-F 0 "#PWR0104" H 2900 1200 50  0001 C CNN
+F 0 "#PWR04" H 2900 1200 50  0001 C CNN
 F 1 "+3.3V" H 2900 1490 50  0000 C CNN
 F 2 "" H 2900 1350 50  0000 C CNN
 F 3 "" H 2900 1350 50  0000 C CNN
@@ -289,16 +284,14 @@ Wire Wire Line
 Wire Wire Line
 	3000 3400 3000 3550
 Wire Wire Line
-	2900 1500 2900 2300
-Wire Wire Line
 	3000 2700 3000 3400
 Wire Wire Line
 	3700 2100 3700 2400
 $Comp
-L power:+12V #PWR0115
+L power:+12V #PWR02
 U 1 1 5FDADED2
 P 7250 1150
-F 0 "#PWR0115" H 7250 1000 50  0001 C CNN
+F 0 "#PWR02" H 7250 1000 50  0001 C CNN
 F 1 "+12V" H 7265 1323 50  0000 C CNN
 F 2 "" H 7250 1150 50  0001 C CNN
 F 3 "" H 7250 1150 50  0001 C CNN
@@ -306,10 +299,10 @@ F 3 "" H 7250 1150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR0118
+L power:+5V #PWR03
 U 1 1 5FDAF92F
 P 7500 1150
-F 0 "#PWR0118" H 7500 1000 50  0001 C CNN
+F 0 "#PWR03" H 7500 1000 50  0001 C CNN
 F 1 "+5V" H 7515 1323 50  0000 C CNN
 F 2 "" H 7500 1150 50  0001 C CNN
 F 3 "" H 7500 1150 50  0001 C CNN
@@ -345,4 +338,46 @@ U 6010D22C
 F0 "ADC" 50
 F1 "adc.sch" 50
 $EndSheet
+$Sheet
+S 4350 4650 1400 900 
+U 5FD72346
+F0 "PoE Injector" 50
+F1 "poe.sch" 50
+$EndSheet
+$Comp
+L Connector:Conn_01x03_Male J3
+U 1 1 5FE76D0D
+P 1100 4500
+F 0 "J3" H 1208 4781 50  0000 C CNN
+F 1 "Conn_01x03_Male" H 1208 4690 50  0000 C CNN
+F 2 "Connector_WUT:Powerpole_PP30-with-1377G2-PCB-pins-25A_3WAY" H 1100 4500 50  0001 C CNN
+F 3 "~" H 1100 4500 50  0001 C CNN
+	1    1100 4500
+	1    0    0    -1  
+$EndComp
+NoConn ~ 1300 4500
+$Comp
+L power:GND #PWR0108
+U 1 1 5FE78B24
+P 1400 4700
+F 0 "#PWR0108" H 1400 4450 50  0001 C CNN
+F 1 "GND" H 1405 4527 50  0000 C CNN
+F 2 "" H 1400 4700 50  0001 C CNN
+F 3 "" H 1400 4700 50  0001 C CNN
+	1    1400 4700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1300 4600 1400 4600
+Wire Wire Line
+	1400 4600 1400 4700
+Wire Wire Line
+	1300 4400 1700 4400
+Text Label 1700 4400 0    50   ~ 0
+VIN
+Text Label 5400 1350 0    50   ~ 0
+VIN
+Wire Wire Line
+	5750 1350 5400 1350
+NoConn ~ 3100 2300
 $EndSCHEMATC
