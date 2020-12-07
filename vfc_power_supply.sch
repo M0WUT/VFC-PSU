@@ -13,54 +13,8 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-$Comp
-L vfc_power_supply-rescue:Mounting_Hole-Mechanical MK1
-U 1 1 5834FB2E
-P 3000 7200
-F 0 "MK1" H 3100 7246 50  0000 L CNN
-F 1 "M2.5" H 3100 7155 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5_Pad_Via" H 3000 7200 60  0001 C CNN
-F 3 "" H 3000 7200 60  0001 C CNN
-	1    3000 7200
-	1    0    0    -1  
-$EndComp
-$Comp
-L vfc_power_supply-rescue:Mounting_Hole-Mechanical MK2
-U 1 1 5834FBEF
-P 3450 7200
-F 0 "MK2" H 3550 7246 50  0000 L CNN
-F 1 "M2.5" H 3550 7155 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5_Pad_Via" H 3450 7200 60  0001 C CNN
-F 3 "" H 3450 7200 60  0001 C CNN
-	1    3450 7200
-	1    0    0    -1  
-$EndComp
-$Comp
-L vfc_power_supply-rescue:Mounting_Hole-Mechanical MK3
-U 1 1 5834FC19
-P 3000 7400
-F 0 "MK3" H 3100 7446 50  0000 L CNN
-F 1 "M2.5" H 3100 7355 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_Pad_Via" H 3000 7400 60  0001 C CNN
-F 3 "" H 3000 7400 60  0001 C CNN
-	1    3000 7400
-	1    0    0    -1  
-$EndComp
-$Comp
-L vfc_power_supply-rescue:Mounting_Hole-Mechanical MK4
-U 1 1 5834FC4F
-P 3450 7400
-F 0 "MK4" H 3550 7446 50  0000 L CNN
-F 1 "M2.5" H 3550 7355 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5_Pad_Via" H 3450 7400 60  0001 C CNN
-F 3 "" H 3450 7400 60  0001 C CNN
-	1    3450 7400
-	1    0    0    -1  
-$EndComp
-Text Notes 3000 7050 0    50   ~ 0
-Mounting Holes
 $Sheet
-S 5750 1100 1000 500 
+S 5750 1100 1000 750 
 U 5FCC0C15
 F0 "Power Supplies" 50
 F1 "psu.sch" 50
@@ -68,6 +22,8 @@ F2 "VIN" I L 5750 1350 50
 F3 "+12V" O R 6750 1350 50 
 F4 "+5V" O R 6750 1450 50 
 F5 "+21V" O R 6750 1250 50 
+F6 "PG_21V" O R 6750 1600 50 
+F7 "PG_12V" O R 6750 1700 50 
 $EndSheet
 $Comp
 L power:+5V #PWR05
@@ -129,10 +85,6 @@ Wire Wire Line
 Wire Wire Line
 	3000 2700 3100 2700
 Connection ~ 3000 3400
-Wire Wire Line
-	2900 1500 3100 1500
-Wire Wire Line
-	2900 1350 2900 1500
 $Comp
 L power:+3.3V #PWR04
 U 1 1 5FD3F9CC
@@ -333,16 +285,35 @@ $EndComp
 Wire Wire Line
 	7000 1150 7000 1250
 $Sheet
-S 6150 2800 1700 1550
+S 8350 2450 800  1750
 U 6010D22C
 F0 "ADC" 50
 F1 "adc.sch" 50
+F2 "SCL" I L 8350 2600 50 
+F3 "SDA" B L 8350 2700 50 
+F4 "CH0" I R 9150 2600 50 
+F5 "CH1" I R 9150 2700 50 
+F6 "CH2" I R 9150 2800 50 
+F7 "CH3" I R 9150 2900 50 
+F8 "CH4" I R 9150 3000 50 
+F9 "CH5" I R 9150 3100 50 
+F10 "CH6" I R 9150 3200 50 
+F11 "CH7" I R 9150 3300 50 
+F12 "CH8" I R 9150 3400 50 
+F13 "CH9" I R 9150 3500 50 
+F14 "CH10" I R 9150 3600 50 
+F15 "CH11" I R 9150 3700 50 
+F16 "CH12" I R 9150 3800 50 
+F17 "CH13" I R 9150 3900 50 
+F18 "CH14" I R 9150 4000 50 
+F19 "CH15" I R 9150 4100 50 
 $EndSheet
 $Sheet
 S 4350 4650 1400 900 
 U 5FD72346
 F0 "PoE Injector" 50
 F1 "poe.sch" 50
+F2 "VDD_AP" I L 4350 4800 50 
 $EndSheet
 $Comp
 L Connector:Conn_01x03_Male J3
@@ -379,5 +350,333 @@ Text Label 5400 1350 0    50   ~ 0
 VIN
 Wire Wire Line
 	5750 1350 5400 1350
-NoConn ~ 3100 2300
+Wire Wire Line
+	2900 2300 3100 2300
+Wire Wire Line
+	2900 1350 2900 2300
+NoConn ~ 3100 1500
+Wire Wire Line
+	8350 2700 7500 2700
+Wire Wire Line
+	7500 2600 8350 2600
+Text Label 7500 2600 0    50   ~ 0
+GPIO3(SCL1)
+Text Label 7500 2700 0    50   ~ 0
+GPIO2(SDA1)
+$Comp
+L LED_WUT:LED_Cree_CLX6E-FKC LD1
+U 1 1 5FF8B9FD
+P 1750 6350
+F 0 "LD1" V 1743 6233 50  0000 R CNN
+F 1 "LED_Cree_CLX6E-FKC" H 1750 6700 50  0001 C CNN
+F 2 "LED_SMD:LED_RGB_PLCC-6" H 1750 6350 50  0001 C CNN
+F 3 "https://www.cree.com/led-components/media/documents/ds-CLX6E-FKC-1359.pdf" H 1750 6350 200 0001 C CNN
+	1    1750 6350
+	0    -1   -1   0   
+$EndComp
+$Comp
+L LED_WUT:LED_Cree_CLX6E-FKC LD1
+U 2 1 5FF8D3E9
+P 2250 6350
+F 0 "LD1" V 2243 6232 50  0000 R CNN
+F 1 "LED_Cree_CLX6E-FKC" H 2250 6700 50  0001 C CNN
+F 2 "LED_SMD:LED_RGB_PLCC-6" H 2250 6350 50  0001 C CNN
+F 3 "https://www.cree.com/led-components/media/documents/ds-CLX6E-FKC-1359.pdf" H 2250 6350 200 0001 C CNN
+	2    2250 6350
+	0    -1   -1   0   
+$EndComp
+$Comp
+L LED_WUT:LED_Cree_CLX6E-FKC LD1
+U 3 1 5FF8F1E9
+P 2800 6350
+F 0 "LD1" V 2793 6232 50  0000 R CNN
+F 1 "LED_Cree_CLX6E-FKC" H 2800 6700 50  0001 C CNN
+F 2 "LED_SMD:LED_RGB_PLCC-6" H 2800 6350 50  0001 C CNN
+F 3 "https://www.cree.com/led-components/media/documents/ds-CLX6E-FKC-1359.pdf" H 2800 6350 200 0001 C CNN
+	3    2800 6350
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR0130
+U 1 1 5FF93218
+P 1750 6650
+F 0 "#PWR0130" H 1750 6400 50  0001 C CNN
+F 1 "GND" H 1755 6477 50  0000 C CNN
+F 2 "" H 1750 6650 50  0001 C CNN
+F 3 "" H 1750 6650 50  0001 C CNN
+	1    1750 6650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1750 6600 2250 6600
+Wire Wire Line
+	2800 6600 2800 6500
+Wire Wire Line
+	1750 6500 1750 6600
+Wire Wire Line
+	2250 6500 2250 6600
+Connection ~ 2250 6600
+Wire Wire Line
+	2250 6600 2800 6600
+Wire Wire Line
+	1750 6600 1750 6650
+Connection ~ 1750 6600
+$Comp
+L Device:R R17
+U 1 1 5FFA17EC
+P 1750 5900
+F 0 "R17" H 1820 5946 50  0000 L CNN
+F 1 "7k5" H 1820 5855 50  0000 L CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 1680 5900 50  0001 C CNN
+F 3 "~" H 1750 5900 50  0001 C CNN
+	1    1750 5900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1750 6050 1750 6200
+$Comp
+L Device:R R18
+U 1 1 5FFA350D
+P 2250 5900
+F 0 "R18" H 2320 5946 50  0000 L CNN
+F 1 "33k" H 2320 5855 50  0000 L CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 2180 5900 50  0001 C CNN
+F 3 "~" H 2250 5900 50  0001 C CNN
+	1    2250 5900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R19
+U 1 1 5FFA36EA
+P 2800 5900
+F 0 "R19" H 2870 5946 50  0000 L CNN
+F 1 "22k" H 2870 5855 50  0000 L CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 2730 5900 50  0001 C CNN
+F 3 "~" H 2800 5900 50  0001 C CNN
+	1    2800 5900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2800 6050 2800 6200
+Wire Wire Line
+	2250 6050 2250 6200
+Wire Wire Line
+	1750 5750 1750 5550
+Wire Wire Line
+	1750 5550 1300 5550
+Wire Wire Line
+	1300 5400 2250 5400
+Wire Wire Line
+	2250 5400 2250 5750
+Wire Wire Line
+	1300 5250 2800 5250
+Wire Wire Line
+	2800 5250 2800 5750
+Text Label 1300 5550 0    50   ~ 0
+GPIO17(GEN0)
+Text Label 1300 5400 0    50   ~ 0
+GPIO27(GEN2)
+Text Label 1300 5250 0    50   ~ 0
+GPIO22(GEN3)
+$Comp
+L Misc_WUT:Logo_10mmx10mm M1
+U 1 1 5FFBD9C0
+P 3550 7050
+F 0 "M1" H 3575 7096 50  0000 L CNN
+F 1 "Logo_10mmx10mm" H 3575 7005 50  0000 L CNN
+F 2 "Misc_WUT:Logo_10mmx10mm_Monocle" H 3550 7050 50  0001 C CNN
+F 3 "" H 3550 7050 50  0001 C CNN
+	1    3550 7050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6750 1600 7500 1600
+Wire Wire Line
+	6750 1700 7500 1700
+Text Label 7500 1700 2    50   ~ 0
+GPIO23(GEN4)
+Text Label 7500 1600 2    50   ~ 0
+GPIO24(GEN5)
+$Comp
+L Device:R R29
+U 1 1 60065511
+P 9750 4100
+F 0 "R29" V 9750 4100 50  0000 C CNN
+F 1 "R" V 9634 4100 50  0001 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 9680 4100 50  0001 C CNN
+F 3 "~" H 9750 4100 50  0001 C CNN
+	1    9750 4100
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R28
+U 1 1 60065FB1
+P 9400 4000
+F 0 "R28" V 9400 4000 50  0000 C CNN
+F 1 "R" V 9284 4000 50  0001 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 9330 4000 50  0001 C CNN
+F 3 "~" H 9400 4000 50  0001 C CNN
+	1    9400 4000
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R27
+U 1 1 600665A5
+P 9750 3900
+F 0 "R27" V 9750 3900 50  0000 C CNN
+F 1 "R" V 9634 3900 50  0001 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 9680 3900 50  0001 C CNN
+F 3 "~" H 9750 3900 50  0001 C CNN
+	1    9750 3900
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R26
+U 1 1 60066DDB
+P 9400 3800
+F 0 "R26" V 9400 3800 50  0000 C CNN
+F 1 "R" V 9284 3800 50  0001 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 9330 3800 50  0001 C CNN
+F 3 "~" H 9400 3800 50  0001 C CNN
+	1    9400 3800
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R25
+U 1 1 60067527
+P 9750 3700
+F 0 "R25" V 9750 3700 50  0000 C CNN
+F 1 "R" V 9634 3700 50  0001 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 9680 3700 50  0001 C CNN
+F 3 "~" H 9750 3700 50  0001 C CNN
+	1    9750 3700
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R24
+U 1 1 60067A10
+P 9400 3600
+F 0 "R24" V 9400 3600 50  0000 C CNN
+F 1 "R" V 9284 3600 50  0001 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 9330 3600 50  0001 C CNN
+F 3 "~" H 9400 3600 50  0001 C CNN
+	1    9400 3600
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R23
+U 1 1 600681B4
+P 9750 3500
+F 0 "R23" V 9750 3500 50  0000 C CNN
+F 1 "R" V 9634 3500 50  0001 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 9680 3500 50  0001 C CNN
+F 3 "~" H 9750 3500 50  0001 C CNN
+	1    9750 3500
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R22
+U 1 1 60068DE5
+P 9400 3400
+F 0 "R22" V 9400 3400 50  0000 C CNN
+F 1 "R" V 9284 3400 50  0001 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 9330 3400 50  0001 C CNN
+F 3 "~" H 9400 3400 50  0001 C CNN
+	1    9400 3400
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	9150 3400 9250 3400
+Wire Wire Line
+	9600 3500 9150 3500
+Wire Wire Line
+	9150 3600 9250 3600
+Wire Wire Line
+	9600 3700 9150 3700
+Wire Wire Line
+	9150 3800 9250 3800
+Wire Wire Line
+	9600 3900 9150 3900
+Wire Wire Line
+	9150 4000 9250 4000
+Wire Wire Line
+	9600 4100 9150 4100
+$Comp
+L power:GND #PWR0133
+U 1 1 60090E3B
+P 10650 4200
+F 0 "#PWR0133" H 10650 3950 50  0001 C CNN
+F 1 "GND" H 10655 4027 50  0000 C CNN
+F 2 "" H 10650 4200 50  0001 C CNN
+F 3 "" H 10650 4200 50  0001 C CNN
+	1    10650 4200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10550 3400 10650 3400
+Wire Wire Line
+	10550 4100 10650 4100
+Connection ~ 10650 4100
+Wire Wire Line
+	10650 4100 10650 4200
+Wire Wire Line
+	10550 4000 10650 4000
+Connection ~ 10650 4000
+Wire Wire Line
+	10650 4000 10650 4100
+Wire Wire Line
+	10550 3900 10650 3900
+Connection ~ 10650 3900
+Wire Wire Line
+	10650 3900 10650 4000
+Wire Wire Line
+	10550 3800 10650 3800
+Connection ~ 10650 3800
+Wire Wire Line
+	10650 3800 10650 3900
+Wire Wire Line
+	10550 3700 10650 3700
+Connection ~ 10650 3700
+Wire Wire Line
+	10650 3700 10650 3800
+Wire Wire Line
+	10550 3600 10650 3600
+Connection ~ 10650 3600
+Wire Wire Line
+	10650 3600 10650 3700
+Wire Wire Line
+	10550 3500 10650 3500
+Wire Wire Line
+	10650 3400 10650 3500
+Connection ~ 10650 3500
+Wire Wire Line
+	10650 3500 10650 3600
+$Comp
+L Connector_Generic:Conn_02x08_Odd_Even J4
+U 1 1 600AF7C6
+P 10250 3700
+F 0 "J4" H 10300 4217 50  0000 C CNN
+F 1 "Conn_02x08_Odd_Even" H 10300 4126 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x08_P2.54mm_Vertical" H 10250 3700 50  0001 C CNN
+F 3 "~" H 10250 3700 50  0001 C CNN
+	1    10250 3700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9900 4100 10050 4100
+Wire Wire Line
+	9550 4000 10050 4000
+Wire Wire Line
+	9900 3900 10050 3900
+Wire Wire Line
+	9550 3800 10050 3800
+Wire Wire Line
+	9900 3700 10050 3700
+Wire Wire Line
+	9550 3600 10050 3600
+Wire Wire Line
+	9900 3500 10050 3500
+Wire Wire Line
+	9550 3400 10050 3400
+Connection ~ 10650 3400
 $EndSCHEMATC

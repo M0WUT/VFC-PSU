@@ -1,4 +1,4 @@
-update=06/12/2020 17:57:01
+update=07/12/2020 21:36:13
 version=1
 last_client=kicad
 [cvpcb]
@@ -256,7 +256,7 @@ dPairGap=0.25
 dPairViaGap=0.25
 [pcbnew/Netclasses/1]
 Name=Ethernet
-Clearance=0.16
+Clearance=0.5
 TrackWidth=0.25
 ViaDiameter=0.9
 ViaDrill=0.6
