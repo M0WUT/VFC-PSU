@@ -309,11 +309,11 @@ F18 "CH14" I R 9150 4000 50
 F19 "CH15" I R 9150 4100 50 
 $EndSheet
 $Sheet
-S 4350 4650 1400 900 
+S 8350 5000 1400 900 
 U 5FD72346
 F0 "PoE Injector" 50
 F1 "poe.sch" 50
-F2 "VDD_AP" I L 4350 4800 50 
+F2 "VDD_AP" I L 8350 5150 50 
 $EndSheet
 $Comp
 L Connector:Conn_01x03_Male J3
@@ -678,5 +678,8 @@ Wire Wire Line
 	9900 3500 10050 3500
 Wire Wire Line
 	9550 3400 10050 3400
-Connection ~ 10650 3400
+Text Notes 3100 6250 0    50   ~ 0
+Didn't need an LED\nbut all softies ask for\na debug LED eventually!
+Text Notes 9000 4500 0    50   ~ 0
+10k input impedance on ADC.\n3.3V max. Use resistor with 10k\nto form potential divider
 $EndSCHEMATC
