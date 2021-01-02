@@ -36,3 +36,6 @@ fp-info-cache
 
 # Log files
 *.log
+
+# Backups from new Kicad format
+*-backups
