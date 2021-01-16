@@ -33,6 +33,7 @@ fp-info-cache
 # CAD
 *.step
 *.stp
+*.dxf
 
 # Log files
 *.log
