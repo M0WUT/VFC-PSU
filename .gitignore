@@ -40,3 +40,6 @@ fp-info-cache
 
 # Backups from new Kicad format
 *-backups
+
+# HTML BOM
+*.html
