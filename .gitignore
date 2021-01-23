@@ -43,3 +43,6 @@ fp-info-cache
 
 # HTML BOM
 *.html
+
+# Gerbers
+Gerbers
